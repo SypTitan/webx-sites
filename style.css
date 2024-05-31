@@ -1,0 +1,12 @@
+body {
+    background-color: #242424;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+h1 {
+    color: orange;
+    font-weight: ultrabold;
+    font-size: larger;
+    margin-left: 5px;
+}

@@ -11,6 +11,10 @@ h1 {
     margin-left: 5px;
 }
 
+p {
+    color: whitesmoke;
+}
+
 a {
     color: orange;
     font-size: x-large;

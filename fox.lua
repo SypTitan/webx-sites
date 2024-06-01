@@ -11,6 +11,6 @@ local function setrandomfox(target)
     img.set_source(res["image"])
 end
 
-print("Source: " .. window.link)
+//print("Source: " .. window.link)
 
 setrandomfox(img)

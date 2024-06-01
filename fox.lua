@@ -12,5 +12,3 @@ local function setrandomfox(target)
 end
 
 setrandomfox(img)
-
-get("newlink").set_href(window.link)

@@ -10,3 +10,9 @@ h1 {
     font-size: larger;
     margin-left: 5px;
 }
+
+a {
+    color: orange;
+    font-size: x-large;
+    font-weight: bold;
+}

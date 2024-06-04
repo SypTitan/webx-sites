@@ -15,8 +15,22 @@ p {
     color: whitesmoke;
 }
 
-a {
-    color: orange;
-    font-size: x-large;
-    font-weight: bold;
+newbutton {
+    margin-bottom: -12px;
+    margin-top: 8px;
+    margin-left: 5px;
+    
+    padding: 5px;
+    color: antiquewhite;
+    background-color: #694400;
+    border-style: outset;
+    border-width: 2px;
+    border-color: #343434;
+}
+
+foximg {
+    border-radius: 25px;
+    border-style: double;
+    border-color: #694400;
+    border-width: 5px;
 }

@@ -1,3 +1,5 @@
+print("Loading fox...")
+
 local img = get("foximg")
 local button = get("newbutton")
 

@@ -1,4 +1,6 @@
-local img = get("foximg")
+print("Fox :3")
+
+local img = get("foximage")
 local button = get("newbutton")
 
 function GenerateImage()
@@ -14,4 +16,6 @@ end
 
 GenerateImage()
 
-button.on_click(GenerateImage())
+button.on_click(function()
+    GenerateImage()
+end)

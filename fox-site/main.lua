@@ -1,7 +1,7 @@
 local img = get("foximg")
 local button = get("newbutton")
 
-function generateImage()
+function GenerateImage()
     local res = fetch({
         url = "https://randomfox.ca/floof/",
         method = "GET",
@@ -12,8 +12,6 @@ function generateImage()
     img.set_source(res["image"])
 end
 
-generateImage()
+GenerateImage()
 
-button.on_click(function ()
-    generateImage()
-end)
+button.on_click(GenerateImage())

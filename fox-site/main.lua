@@ -1,6 +1,4 @@
-print("Fox :3")
-
-local img = get("foximage")
+local img = get("foximg")
 local button = get("newbutton")
 
 function GenerateImage()

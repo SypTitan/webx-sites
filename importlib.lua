@@ -1,14 +1,14 @@
 importlib = {}
 
-function get(lib)
+function importlib.get(lib)
     return require(window.link .. lib)
 end
 
-function require(lib)
+function importlib.require(lib)
     return get(lib)
 end
 
-function import(lib)
+function importlib.import(lib)
     return get(lib)
 end
 

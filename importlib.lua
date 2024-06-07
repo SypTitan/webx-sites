@@ -1,7 +1,7 @@
 importlib = {}
 
 function importlib.get(lib)
-    return require(window.link .. lib)
+    return require(window.link .. '/' .. lib)
 end
 
 function importlib.require(lib)

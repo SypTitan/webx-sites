@@ -38,23 +38,23 @@ function drawPipes(x: number, height: number)
     -- Setup pipe variables
     local current_pipe_width = math.min(pipe_width, screen_width-x, pipe_width+x)
     local current_x = math.max(1, x)
-
+    
+    -- Bird physics
+    if buffered_click then
+        buffered_click = false
+        bird_dy = bird_jump
+        else
+            bird_dy = math.min(bird_max_grav, bird_dy+bird_grav)
+        end
+    bird_y = math.max(0, math.floor(bird_y+bird_dy))
+    bird_y = math.min(screen_height-bird_size, bird_y)
+    
     -- First part of rendering
     local data = ppm.fillTable(screen_width, screen_height, 3, 252, 236)
     ppm.setRectangleTable(data, current_x, 0, current_pipe_width, height, 0, 255, 0)
     ppm.setRectangleTable(data, current_x, height+pipe_gap, current_pipe_width, screen_height-(height+pipe_gap), 0, 255, 0)
     ppm.setRectangleTable(data, 15, bird_y, bird_size, bird_size, 255,215,0)
-
-    -- Bird physics
-    if buffered_click then
-        buffered_click = false
-        bird_dy = bird_jump
-    else
-        bird_dy = math.min(bird_max_grav, bird_dy+bird_grav)
-    end
-    bird_y = math.max(0, math.floor(bird_y+bird_dy))
-    bird_y = math.min(screen_height-bird_size, bird_y)
-
+            
     -- Final rendering
     local final: string = table.concat(data, "\n")
     local to_encode = buffer.fromstring(final)

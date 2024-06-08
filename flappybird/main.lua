@@ -1,9 +1,9 @@
 print("Started script")
-import = require("https://raw.githubusercontent.com/SypTitan/webx-sites/main/importlib.lua")
+-- import = require("https://raw.githubusercontent.com/SypTitan/webx-sites/main/importlib.lua")
 
---b64 = import.get("base64lib.lua")
 b64 = require("https://raw.githubusercontent.com/Reselim/Base64/master/Base64.lua")
-ppm = import.get("ppmlib.lua")
+ppm = require(window.link .. "/ppmlib.lua")
+--ppm = import.get("ppmlib.lua")
 
 local screen = get("screen")
 

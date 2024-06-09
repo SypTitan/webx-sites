@@ -70,9 +70,9 @@ function drawPipes(x: number, height: number)
     if (bird_y+bird_size >= screen_height) then return end
     if (pipeCollision(x, height)) then return end
     if (x > 5-pipe_width) then
-        set_timeout(function() drawPipes(x-5, height) end, 125)
+        set_timeout(function() drawPipes(x-5, height) end, 50)
     else
-        set_timeout(function() drawPipes(screen_width-5, math.random(screen_height//25, screen_height-(screen_height//25)-pipe_gap)) end , 125)
+        set_timeout(function() drawPipes(screen_width-5, math.random(screen_height//25, screen_height-(screen_height//25)-pipe_gap)) end , 50)
         score += 1
         score_board.set_content("Score: "..score)
         if (score > highscore) then

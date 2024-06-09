@@ -38,13 +38,12 @@ function ppmlib.setRectangle(source: string, x: number, y: number, width: number
 end
 
 function ppmlib.fillTable(width: number, height: number, red: number, green: number, blue: number): {string}
-    local result: { string } = {}
-    table.insert(result, "P3")
-    table.insert(result, width .. " " .. height)
-    table.insert(result, "255")
-    for i=1,width*height do
-        table.insert(result, red .. " " .. green .. " " .. blue)
-    end
+    local colour = red .. " " .. green .. " " .. blue
+    local result = table.create(width*height+3, colour)
+    result[1] = "P3"
+    result[2] = width .. " " .. height
+    result[3] = 255
+
     return result
 end
 

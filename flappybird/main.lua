@@ -35,7 +35,7 @@ function pipeCollision(pipe_x: number, pipe_height: number): boolean
     return false
 end
 
-function drawPipes(x: number, height: number)
+function tickGame(x: number, height: number)
     -- Setup pipe variables
     local current_pipe_width = math.min(pipe_width, screen_width-x, pipe_width+x)
     local current_x = math.max(1, x)
@@ -52,9 +52,9 @@ function drawPipes(x: number, height: number)
     
     -- First part of rendering
     local data = ppm.fillTable(screen_width, screen_height, 3, 252, 236)
-    ppm.setRectangleTable(data, current_x, 0, current_pipe_width, height, 0, 255, 0)
-    ppm.setRectangleTable(data, current_x, height+pipe_gap, current_pipe_width, screen_height-(height+pipe_gap), 0, 255, 0)
-    ppm.setRectangleTable(data, 15, bird_y, bird_size, bird_size, 255,215,0)
+    ppm.setRectangleTable(data, current_x, 0, current_pipe_width, height, 0, 255, 0, screen_width, screen_height)
+    ppm.setRectangleTable(data, current_x, height+pipe_gap, current_pipe_width, screen_height-(height+pipe_gap), 0, 255, 0, screen_width, screen_height)
+    ppm.setRectangleTable(data, 15, bird_y, bird_size, bird_size, 255,215,0, screen_width, screen_height)
             
     -- Final rendering
     local final: string = table.concat(data, "\n")
@@ -70,9 +70,9 @@ function drawPipes(x: number, height: number)
     if (bird_y+bird_size >= screen_height) then return end
     if (pipeCollision(x, height)) then return end
     if (x > 5-pipe_width) then
-        set_timeout(function() drawPipes(x-5, height) end, 50)
+        set_timeout(function() tickGame(x-5, height) end, 50)
     else
-        set_timeout(function() drawPipes(screen_width-5, math.random(screen_height//25, screen_height-(screen_height//25)-pipe_gap)) end , 50)
+        set_timeout(function() tickGame(screen_width-5, math.random(screen_height//25, screen_height-(screen_height//25)-pipe_gap)) end , 50)
         score += 1
         score_board.set_content("Score: "..score)
         if (score > highscore) then
@@ -80,6 +80,13 @@ function drawPipes(x: number, height: number)
             highscore_board.set_content("Your highscore: "..highscore)
         end
     end
+end
+
+function startGame()
+    stop_game = false
+    score = 0
+    score_board.set_content("Score: 0")
+    tickGame(screen_width-3, math.random(screen_height//20, screen_height-(screen_height//20)-pipe_gap))
 end
 
 screen.set_source("data:image/x-portable-bitmap;base64," .. buffer.tostring(b64.encode(buffer.fromstring(ppm.fillFile(screen_width, screen_height, 3, 252, 236)))))
@@ -90,18 +97,12 @@ end)
 
 get("start").on_click(function()
     if (stop_game) then
-        stop_game = false
-        score = 0
-        score_board.set_content("Score: 0")
-        drawPipes(screen_width-3, math.random(screen_height//20, screen_height-(screen_height//20)-pipe_gap))
+        startGame()
     else
         stop_game = true
         set_timeout(function() 
-            stop_game = false
-            score = 0
-            score_board.set_content("Score: 0")
-            drawPipes(screen_width-5, math.random(screen_height//20, screen_height-(screen_height//20)-pipe_gap))
-        end, 500)
+            startGame()
+        end, 200)
     end
 end)
 

@@ -23,7 +23,6 @@ function ppmlib.setRectangleTable(source: { string }, x: number, y: number, widt
         end
         index += fullwidth
     end
-    table
     return source
 end
 

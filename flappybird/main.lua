@@ -25,6 +25,7 @@ local bird_jump = -4
 local stop_game = true
 local score = 0
 local highscore = 0
+local prevtime = 0
 
 function pipeCollision(pipe_x: number, pipe_height: number): boolean
     if (pipe_x < 15+bird_size and pipe_x+pipe_width > 15) then
@@ -36,6 +37,11 @@ function pipeCollision(pipe_x: number, pipe_height: number): boolean
 end
 
 function tickGame(x: number, height: number)
+    -- Performance benchmarking
+    local start = os.clock()
+    print("Previous tick time: "..start-prevtime)
+    prevtime = start
+
     -- Setup pipe variables
     local current_pipe_width = math.min(pipe_width, screen_width-x, pipe_width+x)
     local current_x = math.max(1, x)

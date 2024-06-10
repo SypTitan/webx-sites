@@ -3,8 +3,8 @@ print("Started script")
 print("window.link: "..window.link)
 
 b64 = require("https://raw.githubusercontent.com/Reselim/Base64/master/Base64.lua")
---ppm = require("https://raw.githubusercontent.com/SypTitan/webx-sites/main/flappybird/ppmlib.lua")
-ppm = require(window.link.."/ppmlib.lua")
+ppm = require("https://raw.githubusercontent.com/SypTitan/webx-sites/main/flappybird/ppmlib.lua")
+--ppm = require(window.link.."/ppmlib.lua")
 
 local screen = get("screen")
 

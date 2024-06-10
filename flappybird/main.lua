@@ -58,30 +58,30 @@ function tickGame(x: number, height: number)
     end
     bird_y = math.max(0, math.floor(bird_y+bird_dy))
     bird_y = math.min(screen_height-bird_size, bird_y)
-    local physics = os.clock()
+    -- local physics = os.clock()
     -- First part of rendering
     local data = ppm.fillTable(screen_width, screen_height, 3, 252, 236)
-    local created = os.clock()
+    -- local created = os.clock()
     ppm.setRectangleTable(data, current_x, 0, current_pipe_width, height, 0, 255, 0, screen_width, screen_height)
     ppm.setRectangleTable(data, current_x, height+pipe_gap, current_pipe_width, screen_height-(height+pipe_gap), 0, 255, 0, screen_width, screen_height)
     ppm.setRectangleTable(data, bird_x, bird_y, bird_size, bird_size, 255, 215, 0, screen_width, screen_height)
-    local rectangles = os.clock()            
+    -- local rectangles = os.clock()            
 
     -- Final rendering
     local final: string = table.concat(data)
     -- print(string.sub(final, 1, 100))
-    local concatenated = os.clock()
+    -- local concatenated = os.clock()
     screen.set_source(final)
-    local encoded = os.clock()
+    -- local encoded = os.clock()
 
     -- Displaying metrics
-    print("\n\n")
-    print("Physics: "..physics-start)
-    print("Background: "..created-physics)
-    print("Rectangles: "..rectangles-created)
-    print("Stringed: "..concatenated-rectangles)
-    print("Encoded: "..encoded-concatenated)
-    print("Total: "..encoded-start)
+    -- print("\n\n")
+    -- print("Physics: "..physics-start)
+    -- print("Background: "..created-physics)
+    -- print("Rectangles: "..rectangles-created)
+    -- print("Stringed: "..concatenated-rectangles)
+    -- print("Encoded: "..encoded-concatenated)
+    -- print("Total: "..encoded-start)
 
     -- Game loop
     if (stop_game) then

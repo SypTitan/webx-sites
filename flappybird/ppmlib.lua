@@ -2,9 +2,8 @@ local ppmlib = {}
 
 local b64 = require("https://raw.githubusercontent.com/Reselim/Base64/master/Base64.lua")
 
-local preprocessed_colours = {}
-
 local encoded_header = { ["width"] = -1, ["height"] = -1, ["data"] = ""} 
+local preprocessed_colours = {}
 
 function getMeta(): string
     return "data:image/x-portable-bitmap;base64,"
